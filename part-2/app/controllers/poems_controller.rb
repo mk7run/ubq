@@ -10,6 +10,8 @@ post "/poems" do
       erb :"/poems/_poem", layout: false, locals: {poem: @poem}
     else
       status 422
+      @errors = @poem.errors.full_messages
+      erb :"/_errors", layout: false
     end
   else
     if @poem.save

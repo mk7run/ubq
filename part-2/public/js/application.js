@@ -6,7 +6,7 @@ $(document).ready(function() {
   var url = $newPoemForm.attr("action");
   var method = $newPoemForm.attr("method");
   var data = $newPoemForm.serialize();
-
+  $newPoemForm.siblings(".errors").remove();
   $.ajax({
     url: url,
     method: method,
@@ -14,6 +14,8 @@ $(document).ready(function() {
   }).done(function(response){
     $newPoemForm.trigger("reset")
     $("#poem-list").prepend(response)
-  });
+  }).fail(function(failure){
+    $newPoemForm.before(failure.responseText);
+  })
  });
 });

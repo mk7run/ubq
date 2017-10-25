@@ -1,0 +1,10 @@
+<div class="potluck-attendance-form">
+  <% if @errors %>
+    <%= erb :"/_errors", locals: {errors: @errors}  %>
+  <% end %>
+  <form method="POST" action="/potlucks/<%= potluck.id %>/potluck_attendances">
+    <label for="name">What dish will you bring?</label>
+    <input type="text" name="dish" placeholder="something delicious...">
+    <input type="submit" value="Attend Potluck">
+  </form>
+</div>

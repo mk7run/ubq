@@ -46,4 +46,15 @@ class User < ActiveRecord::Base
       event.starts_at < Time.now.utc
     end
   end
+
+  def attending?(event)
+    self.potlucks.include?(event)
+  end
+
+  def bringing_to(event)
+    if self.attending?(event)
+      rsvp = self.potluck_attendances.find {|rsvp| rsvp.potluck == event && self == rsvp.user}
+      rsvp.dish
+    end
+  end
 end

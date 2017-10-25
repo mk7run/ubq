@@ -1,3 +1,7 @@
+<% if @success %>
+  <span id="success-message"><%= @success %></span>
+<% end %>
+
 <div class="potluck-show">
   <h2><%= @potluck.name %></h2>
   <ul>
@@ -15,3 +19,28 @@
     </nav>
   <% end %>
 </div>
+
+<% if @errors %>
+  <%= erb :"_errors", locals: { errors: @errors } %>
+<% end %>
+
+<% if current_user.attending?(@potluck) %>
+  <h4>Yay, you are already attending! Thanks for bringing <%= current_user.bringing_to(@potluck) %></h4>
+<% else %>
+  <h3>Attend the Potluck</h3>
+  <% if @dish_errors %>
+    <%= erb :"_errors", locals: { errors: @dish_errors } %>
+  <% end %>
+  <%= erb :"/potluck_attendances/_form", locals: {potluck: @potluck} %>
+<% end %>
+
+<h2>Attendees</h2>
+<% if !@potluck.potluck_attendances.empty? %>
+  <ul>
+    <% @potluck.potluck_attendances.each do |attendance| %>
+      <li><%= attendance.user.username %> is bringing <%= attendance.dish %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <h4>There are no attendees yet! Join the host <%= @potluck.host.username %> at this potluck!</h4>
+<% end %>

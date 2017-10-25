@@ -18,7 +18,7 @@ end
 post '/potlucks' do
   @potluck = Potluck.new(params[:potluck])
   authenticate!
-  @potluck.host_id = current_user.id
+  @potluck.host = current_user
   if @potluck.save
     redirect "/potlucks/#{@potluck.id}"
   else
@@ -29,6 +29,10 @@ end
 
 get '/potlucks/:id' do
   authenticate!
+  @success_boolean = params[:success]
+  if @success_boolean == "true"
+    @success = "You are now attending #{params[:dp]}!"
+  end
   @potluck = find_and_ensure(params[:id])
   erb :"/potlucks/show"
 end
@@ -63,3 +67,14 @@ delete '/potlucks/:id' do
   redirect "/potlucks?delete=true&dp=#{@potluck.name}"
 end
 
+post '/potlucks/:potluck_id/potluck_attendances' do
+  ep @potluck = find_and_ensure(params[:potluck_id])
+  @attendance = PotluckAttendance.new(dish: params[:dish], potluck: @potluck , user: current_user)
+  authenticate!
+  if @attendance.save
+    redirect "/potlucks/#{@potluck.id}?success=true&dp=#{@potluck.name}"
+  else
+    @dish_errors = @attendance.errors.full_messages
+    erb :"/potlucks/show"
+  end
+end

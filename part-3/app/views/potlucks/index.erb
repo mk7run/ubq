@@ -1,9 +1,10 @@
 <% if @delete %>
   <span id="delete-message"><%= @delete %></span>
 <% end %>
-
-<ul>
-  <% @current_potlucks.each do |event| %>
-    <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
-  <% end %>
-</ul>
+<div id="potluck-home-list">
+  <ul>
+    <% @current_potlucks.each do |event| %>
+      <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
+    <% end %>
+  </ul>
+</div>

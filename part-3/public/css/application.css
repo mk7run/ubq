@@ -35,7 +35,25 @@ header {
 }
 
 header:hover {
-  color: #b147ff;
+  color: #2634a7;
+}
+
+#potluck-home-list {
+  padding-left: 7%;
+  padding-right: 7%;
+  display: inline-block;
+}
+
+#potluck-home-list li{
+  display: block;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.event {
+  list-style: none;
+  background-color: white;
 }
 
 .event-name {
@@ -43,15 +61,12 @@ header:hover {
 }
 
 .event-details {
-
+  color: #404040;
+  text-indent: 30px;
 }
 
 .event span {
   display: block;
-}
-
-.event {
-  list-style: none;
 }
 
 .no-style-button {
@@ -90,8 +105,10 @@ header:hover {
 .user-header {
   font-size: 1.25em
 }
+
 #potluck-container div {
   display: inline-block;
   padding: 2%;
   margin: 0;
 }
+

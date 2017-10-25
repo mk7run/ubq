@@ -1,6 +1,6 @@
 module PotluckEventHelpers
   def date(datetime)
-    datetime.strftime("%A %B %e, %Y")
+    datetime.strftime("%A, %B %e, %Y")
   end
 
   def time(datetime)

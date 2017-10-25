@@ -23,7 +23,21 @@ Stamp.prototype.averageAppraisal = function(){
   return (this.totalAppraisal() / this.appraisalValues.length)
 }
 
+// Stamp.prototype.maximumAppraisal = function(){
+//   var sortedAppraisal = this.appraisalValues.sort()
+//   return sortedAppraisal.pop()
+// }
+
 Stamp.prototype.maximumAppraisal = function(){
-  var sortedAppraisal = this.appraisalValues.sort()
-  return sortedAppraisal.pop()
+  var stampValues = this.appraisalValues;
+  for (var i = 0; i < stampValues.length; i++ ){
+    for (var j = 0; j < i; j++){
+      if (stampValues[i] > stampValues[j]){
+        var x = stampValues[i];
+        stampValues[i] = stampValues[j];
+        stampValues[j] = x
+      }
+    }
+  }
+  return stampValues[0]
 }

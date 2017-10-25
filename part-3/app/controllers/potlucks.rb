@@ -8,7 +8,7 @@ end
 
 get '/potlucks/new' do
   authenticate!
-  erb :"/potlucks/new"
+  erb :"/potlucks/form"
 end
 
 post '/potlucks' do
@@ -20,7 +20,7 @@ post '/potlucks' do
     redirect "/potlucks/#{@potluck.id}"
   else
     @errors = @potluck.errors.full_messages
-    erb :"/potlucks/new"
+    erb :"/potlucks/form"
   end
 end
 
@@ -29,32 +29,32 @@ get '/potlucks/:id' do
   erb :"/potlucks/show"
 end
 
-# get '/potlucks/:id/edit' do
-#   @potluck = find_and_ensure(params[:id])
-#   authenticate!
-#   authorize!(@potluck.owner)
-#   erb :"/potlucks/edit"
-# end
+get '/potlucks/:id/edit' do
+  @potluck = find_and_ensure(params[:id])
+  authenticate!
+  authorize!(@potluck.host)
+  erb :"/potlucks/form"
+end
 
-# put '/potlucks/:id' do
-#   @potluck = find_and_ensure(params[:id])
-#   authenticate!
-#   authorize!(@potluck.owner)
-#   @potluck.assign_attributes(params[:potluck])
+put '/potlucks/:id' do
+  @potluck = find_and_ensure(params[:id])
+  authenticate!
+  authorize!(@potluck.host)
+  @potluck.assign_attributes(params[:potluck])
 
-#   if @potluck.save
-#     redirect "/potlucks/#{params[:id]}"
-#   else
-#     @errors = @potluck.errors.full_messages
-#     erb :'potlucks/edit'
-#   end
-# end
+  if @potluck.save
+    redirect "/potlucks/#{params[:id]}"
+  else
+    @errors = @potluck.errors.full_messages
+    erb :'potlucks/edit'
+  end
+end
 
-# delete '/potlucks/:id' do
-#   @potluck = find_and_ensure(params[:id])
-#   authenticate!
-#   authorize!(@potluck.owner)
-#   @potluck.destroy
-#   redirect '/potlucks'
-# end
+delete '/potlucks/:id' do
+  @potluck = find_and_ensure(params[:id])
+  authenticate!
+  authorize!(@potluck.host)
+  @potluck.destroy
+  redirect '/potlucks'
+end
 

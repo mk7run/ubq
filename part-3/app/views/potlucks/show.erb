@@ -6,4 +6,12 @@
     <li>Time: <%= time(@potluck.starts_at) %></li>
     <li>Host: <a href="/users/<%= @potluck.host.id %>"><%= @potluck.host.username %></a></li>
   </ul>
+  <% if logged_in? && authorized?(@potluck.host) %>
+    <nav>
+      <ul>
+        <li><a href="/potlucks/<%= @potluck.id %>/edit">edit</a></li>
+        <li><a><%= erb :"/potlucks/_delete", locals: {potluck: @potluck} %></a></li>
+      </ul>
+    </nav>
+  <% end %>
 </div>

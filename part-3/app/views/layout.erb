@@ -24,7 +24,7 @@
         <li><a href="/">Home</a></li>  |
         <li><a href="/users/<%= current_user.id %>">Hello, <%= current_user.username %></a></li>  |
         <li><a href="/potlucks/new">Host a Potluck</a></li>  |
-        <li><a><%= erb :"/sessions/_delete" %></a></li>
+        <li><a id="logout"><%= erb :"/sessions/_delete" %></a></li>
       </ul>
     </nav>
   <% else %>

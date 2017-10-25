@@ -1,8 +1,10 @@
 <ul>
   <% @current_potlucks.each do |event| %>
     <li class="event">
-      <span class="event-name"><%= event.name %></span>
-      <span class="event-details"><%= time(event.starts_at) %> at <%= event.location %></span>
+      <span class="event-name">
+        <a href="/potlucks/<%= event.id %>"><%= event.name %></a>
+        </span>
+      <span class="event-details"><%= date(event.starts_at) %> at <%= event.location %></span>
   </li>
   <% end %>
 </ul>

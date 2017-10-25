@@ -6,7 +6,11 @@ class Potluck < ActiveRecord::Base
 
   def self.current
     self.select do |event|
-      event.starts_at > Time.now.utc
+      event.starts_at >= Time.now.utc
     end
   end
+
+  # def past
+  #   self.starts_at > Time.now.utc
+  # end
 end

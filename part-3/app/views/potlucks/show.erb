@@ -24,10 +24,10 @@
     <%= erb :"_errors", locals: { errors: @errors } %>
   <% end %>
   <div id="potluck-form-container">
-    <% if current_user.attending?(@potluck) %>
+    <% if current_user.attending?(@potluck)%>
       <h4>Yay, you are already attending! Thanks for bringing <%= current_user.bringing_to(@potluck) %></h4>
     <% else %>
-      <h3>Attend the Potluck</h3>
+      <h2>Attend the Potluck!</h2>
       <% if @dish_errors %>
         <%= erb :"_errors", locals: { errors: @dish_errors } %>
       <% end %>

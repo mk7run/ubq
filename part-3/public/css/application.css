@@ -54,6 +54,9 @@ header:hover {
 .event {
   list-style: none;
   background-color: white;
+  margin: 5px;
+  border-radius: 5px;
+  padding: 2%;
 }
 
 .event-name {
@@ -99,7 +102,12 @@ header:hover {
 #potluck-container {
   margin: 0;
   padding: 3%;
-  padding-top: 0
+  padding-top: 0;
+  display: inline-block;
+}
+
+#potluck-container ul{
+  margin: 5px;
 }
 
 .user-header {
@@ -121,7 +129,7 @@ header:hover {
 #potluck-show-container {
   padding: 0 7%;
   padding-bottom: 5%;
-  width: 45%;
+  width: 30%;
   margin: 0;
   display: inline-block;
 }
@@ -163,5 +171,23 @@ nav#edit-delete > ul{
 }
 
 #potluck-form-container {
-  float:right;
+  float: right;
+  padding-right: 10%;
+  width: 25%;
 }
+
+#potluck-form-container h2{
+  font-size: 2em
+}
+
+#potluck-form-container input{
+  display: block;
+}
+
+.input {
+  height: 50px;
+  width: 200px;
+}
+
+label {
+  font-size: 1.25em;

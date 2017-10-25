@@ -34,4 +34,10 @@ class User < ActiveRecord::Base
   def has_potlucks_to_host?
     self.potluck_host_events.length > 0
   end
+
+  def upcoming_events
+    self.potluck_host_events.select do |event|
+      event.starts_at > Time.now.utc
+    end
+  end
 end

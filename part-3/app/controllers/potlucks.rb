@@ -6,23 +6,23 @@ get '/potlucks' do
   erb :"/potlucks/index"
 end
 
-# get '/potlucks/new' do
-#   authenticate!
-#   erb :"/potlucks/new"
-# end
+get '/potlucks/new' do
+  authenticate!
+  erb :"/potlucks/new"
+end
 
-# post '/potlucks' do
-#   @potluck = potluck.new(params[:potluck])
-#   authenticate!
-
-#   if @potluck.valid?
-#     current_user.potlucks << @potlucks
-#     redirect "/potlucks/#{@potluck.id}"
-#   else
-#     @errors = @potlucks.errors.full_messages
-#     erb :"/potlucks/new"
-#   end
-# end
+post '/potlucks' do
+  @potluck = Potluck.new(params[:potluck])
+  authenticate!
+  @potluck.host_id = current_user.id
+  if @potluck.save
+    current_user.potlucks << @potlucks
+    redirect "/potlucks/#{@potluck.id}"
+  else
+    @errors = @potluck.errors.full_messages
+    erb :"/potlucks/new"
+  end
+end
 
 get '/potlucks/:id' do
   @potluck = find_and_ensure(params[:id])

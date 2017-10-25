@@ -1,12 +1,14 @@
-
 <div class="new-potluck-form">
+  <% if @errors %>
+    <%= erb :"/_errors", locals: {errors: @errors}  %>
+  <% end %>
   <form method="POST" action="/potlucks">
     <label for="name">Potluck Name:</label>
-    <input type="text" name="potluck[name]">
+    <input type="text" name="potluck[name]" value="<%= @potluck.try(:name) %>">
     <label for="location">Potluck Location:</label>
-    <input type="text" name="potluck[location]">
+    <input type="text" name="potluck[location]" value="<%= @potluck.try(:location) %>">
     <label for="starts_at">Start at:</label>
-    <input type="datetime-local" name="potluck[starts_at]">
+    <input type="datetime-local" name="potluck[starts_at]" value="event_date_input_format(@potluck.try(:starts_at))">
     <input type="submit" value="Host Potluck">
   </form>
 </div>

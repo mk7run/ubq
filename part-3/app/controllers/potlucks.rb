@@ -16,7 +16,7 @@ post '/potlucks' do
   authenticate!
   @potluck.host_id = current_user.id
   if @potluck.save
-    current_user.potlucks << @potlucks
+    current_user.potluck_host_events << @potluck
     redirect "/potlucks/#{@potluck.id}"
   else
     @errors = @potluck.errors.full_messages

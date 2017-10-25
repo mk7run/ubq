@@ -1,4 +1,10 @@
 get '/potlucks' do
+  @delete_boolean = params[:delete]
+  ep @delete_boolean
+  ep params[:dp]
+  if @delete_boolean == "true"
+    @delete = "#{params[:dp]} has been deleted!"
+  end
   @upcoming_potlucks_events = Potluck.order(:starts_at)
   @current_potlucks = @upcoming_potlucks_events.current
 
@@ -39,7 +45,7 @@ end
 put '/potlucks/:id' do
   @potluck = find_and_ensure(params[:id])
   authenticate!
-  authorize!(@potluck.host)
+  authorized?(@potluck.host)
   @potluck.assign_attributes(params[:potluck])
 
   if @potluck.save
@@ -53,8 +59,9 @@ end
 delete '/potlucks/:id' do
   @potluck = find_and_ensure(params[:id])
   authenticate!
-  authorize!(@potluck.host)
+  authorized?(@potluck.host)
+  ep "authorized to delete"
   @potluck.destroy
-  redirect '/potlucks'
+  redirect "/potlucks?delete=true&dp=#{@potluck.name}"
 end
 

@@ -1,0 +1,9 @@
+<div class="potluck-show">
+  <h2><%= @potluck.name %></h2>
+  <ul>
+    <li>Location: <%= @potluck.location  %></li>
+    <li>Date: <%= date(@potluck.starts_at) %></li>
+    <li>Time: <%= time(@potluck.starts_at) %></li>
+    <li>Host: <a href="/users/<%= @potluck.host.id %>"><%= @potluck.host.username %></a></li>
+  </ul>
+</div>

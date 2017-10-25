@@ -5,7 +5,7 @@ body {
   color: black;
 }
 
-nav {
+nav#nav-bar {
   float: right;
   padding-right: 10%;
 }
@@ -112,3 +112,56 @@ header:hover {
   margin: 0;
 }
 
+#potluck-show-page {
+  margin: 0;
+  padding: 3%;
+  padding-top: 0
+}
+
+#potluck-show-container {
+  padding: 0 7%;
+  padding-bottom: 5%;
+  width: 45%;
+  margin: 0;
+  display: inline-block;
+}
+
+#potluck-show-container h2{
+  font-size: 3em;
+  padding: 0;
+}
+
+#potluck-attendee-container {
+  padding: 0 7%;
+  display: inline-block;
+  width: 45%;
+}
+
+#potluck-attendee-container h2{
+  font-size: 2em;
+}
+
+ul#potluck-details {
+  background: #d9dcf4;
+  display: inline-block;
+  margin: 0;
+  padding: 1%;
+  border-radius: 5px;
+  margin-left: 10%;
+  width: auto;
+}
+
+#potluck-details li {
+  list-style: none;
+  line-height: 30px;
+  font-size: 1.25em;
+}
+
+nav#edit-delete > ul{
+  margin: 0;
+  padding-left: 10%
+}
+
+#potluck-form-container {
+  float:right;
+}

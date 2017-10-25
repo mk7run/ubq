@@ -1,0 +1,6 @@
+<label for="name">Potluck Name:</label>
+<input type="text" name="potluck[name]" value="<%= potluck.try(:name) %>">
+<label for="location">Potluck Location:</label>
+<input type="text" name="potluck[location]" value="<%= potluck.try(:location) %>">
+<label for="starts_at">Start at:</label>
+<input type="datetime-local" name="potluck[starts_at]" value="event_date_input_format(potluck.try(:starts_at))">

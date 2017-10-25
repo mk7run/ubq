@@ -10,8 +10,9 @@ get '/potlucks' do
 end
 
 get '/potlucks/new' do
+  @potluck = Potluck.new
   authenticate!
-  erb :"/potlucks/form"
+  erb :"/potlucks/new"
 end
 
 post '/potlucks' do
@@ -22,7 +23,7 @@ post '/potlucks' do
     redirect "/potlucks/#{@potluck.id}"
   else
     @errors = @potluck.errors.full_messages
-    erb :"/potlucks/form"
+    erb :"/potlucks/new"
   end
 end
 
@@ -36,7 +37,7 @@ get '/potlucks/:id/edit' do
   @potluck = find_and_ensure(params[:id])
   authenticate!
   authorize!(@potluck.host)
-  erb :"/potlucks/form"
+  erb :"/potlucks/edit"
 end
 
 put '/potlucks/:id' do

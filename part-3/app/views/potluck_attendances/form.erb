@@ -1,8 +1,8 @@
-<div class="new-potluck-form">
+<div class="potluck-attendance-form">
   <% if @errors %>
     <%= erb :"/_errors", locals: {errors: @errors}  %>
   <% end %>
-  <form method="POST" action="/potlucks">
+  <form method="POST" action="/potluckattendances">
     <label for="name">Potluck Name:</label>
     <input type="text" name="potluck[name]" value="<%= @potluck.try(:name) %>">
     <label for="location">Potluck Location:</label>

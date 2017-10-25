@@ -1,0 +1,11 @@
+<div class="edit-potluck-form">
+  <% if @errors %>
+    <%= erb :"/_errors", locals: {errors: @errors}  %>
+  <% end %>
+  <form method="POST" action="/potlucks/<%= @potluck.id %>">
+    <input type="hidden" name="_method" value="PUT" />
+    <%= erb :"/potlucks/_form", locals: {potluck: @potluck} %>
+
+    <input type="submit" value="Update Potluck">
+  </form>
+</div>

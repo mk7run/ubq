@@ -5,7 +5,7 @@
     </h1>
 
     <p class="poem-detail-line"><%= authorship_tagline(poem) %></p>
-    <p class="poem-detail-line"><%= applause_report(poem) %></p>
+    <%= erb :"/poems/_applause_count", layout: false, locals: {poem: poem} %>
   </div>
 
   <p class="poem-body handwritten light">

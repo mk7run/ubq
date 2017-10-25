@@ -16,6 +16,21 @@ $(document).ready(function() {
     $("#poem-list").prepend(response)
   }).fail(function(failure){
     $newPoemForm.before(failure.responseText);
+  });
+ });
+
+ $("#poem-list").on("click", ".applaud-button", function(event){
+  event.preventDefault();
+  var $applaudButton = $(this);
+
+  var url = $applaudButton.attr("action");
+  var method = $applaudButton.find("input[type='hidden']").attr("value");
+  $.ajax({
+    url: url,
+    method: method
+  }).done(function(response){
+    console.log(response)
+    $applaudButton.closest("article.poem").find(".applause-count").replaceWith(response)
   })
  });
 });

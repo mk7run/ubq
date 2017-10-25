@@ -26,7 +26,11 @@ end
 put "/poems/:id/applauses" do
   poem = Poem.find(params[:id])
   poem.increment!(:applauses)
-  redirect "/poems/#{poem.id}"
+  if request.xhr?
+    erb :"/poems/_applause_count", layout: false, locals: {poem: poem}
+  else
+    redirect "/poems/#{poem.id}"
+  end
 end
 
 get "/poems/new" do

@@ -31,6 +31,11 @@ a:hover {
 header {
   font-size: 2em;
   padding-left: 7%;
+  text-shadow: 2px 2px #FFFFFF;
+}
+
+header:hover {
+  color: #b147ff;
 }
 
 .event-name {
@@ -64,4 +69,29 @@ header {
 .no-style-button input:hover {
   text-decoration: underline;
   color: #9932CC;
+}
+
+#user-profile {
+  padding: 2%;
+  font-size: 1.75em;
+  text-align: center;
+}
+
+#user-profile:hover {
+  color: #1b2577;
+}
+
+#potluck-container {
+  margin: 0;
+  padding: 3%;
+  padding-top: 0
+}
+
+.user-header {
+  font-size: 1.25em
+}
+#potluck-container div {
+  display: inline-block;
+  padding: 2%;
+  margin: 0;
 }

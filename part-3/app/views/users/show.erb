@@ -1,33 +1,37 @@
 <h3 id="user-profile"><%= @user.username %>'s Potluck Profile Page</h3>
-<% if authorized?(@user) %>
-  <% if @user.has_potlucks_to_host? %>
-    <h4>Upcoming Potluck events you have:</h4>
-    <ul>
-      <% @user.upcoming_events.each do |event| %>
-        <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
-      <% end %>
+<div id="potluck-container">
+  <% if authorized?(@user) %>
+    <% if @user.has_potlucks_to_host? %>
+      <h4 class="user-header">Upcoming Potluck events you have:</h4>
+      <ul>
+        <% @user.upcoming_events.each do |event| %>
+          <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
+        <% end %>
       </ul>
+
+    <% else %>
+      <h4 class="user-header">You haven't created an upcoming potluck event yet!</h4>
+    <% end %>
   <% else %>
-    <h4>You haven't created an upcoming potluck event yet!</h4>
+    <% if @user.has_potlucks_to_host? %>
+      <h4 class="user-header">Upcoming Potluck events <%= @user.username %> is hosting:</h4>
+      <ul>
+        <% @user.upcoming_events.each do |event| %>
+          <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
+        <% end %>
+      </ul>
+
+    <% else %>
+      <h4 class="user-header"><%= @user.username %>hasn't created a potluck event yet!</h4>
+    <% end %>
   <% end %>
-<% else %>
-  <% if @user.has_potlucks_to_host? %>
-    <h4>Upcoming Potluck events <%= @user.username %> is hosting:</h4>
+
+  <% if !@user.past_potlucks.empty? %>
+    <h4 id="past-events" class="user-header">Past potlucks:</h4>
     <ul>
-      <% @user.upcoming_events.each do |event| %>
+      <% @user.past_potlucks.each do |event| %>
         <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
       <% end %>
     </ul>
-  <% else %>
-    <h4><%= @user.username %>hasn't created a potluck event yet!</h4>
   <% end %>
-<% end %>
-
-<% if @user.past_potlucks %>
-  <h4 id="past-events">Past potlucks:</h4>
-  <ul>
-    <% @user.past_potlucks.each do |event| %>
-      <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
-    <% end %>
-  </ul>
-<% end %>
+</div>

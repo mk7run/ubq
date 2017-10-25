@@ -1,13 +1,10 @@
 get '/potlucks' do
   @delete_boolean = params[:delete]
-  ep @delete_boolean
-  ep params[:dp]
   if @delete_boolean == "true"
     @delete = "#{params[:dp]} has been deleted!"
   end
   @upcoming_potlucks_events = Potluck.order(:starts_at)
   @current_potlucks = @upcoming_potlucks_events.current
-
   @potlucks = @upcoming_potlucks_events
   erb :"/potlucks/index"
 end
@@ -22,7 +19,6 @@ post '/potlucks' do
   authenticate!
   @potluck.host_id = current_user.id
   if @potluck.save
-    current_user.potluck_host_events << @potluck
     redirect "/potlucks/#{@potluck.id}"
   else
     @errors = @potluck.errors.full_messages
@@ -31,6 +27,7 @@ post '/potlucks' do
 end
 
 get '/potlucks/:id' do
+  authenticate!
   @potluck = find_and_ensure(params[:id])
   erb :"/potlucks/show"
 end

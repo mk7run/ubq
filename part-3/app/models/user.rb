@@ -31,13 +31,19 @@ class User < ActiveRecord::Base
     end
   end
 
-  def has_potlucks_to_host?
-    self.potluck_host_events.length > 0
-  end
-
   def upcoming_events
     self.potluck_host_events.select do |event|
-      event.starts_at > Time.now.utc
+      event.starts_at >= Time.now.utc
+    end
+  end
+
+  def has_potlucks_to_host?
+    self.upcoming_events.length > 0
+  end
+
+  def past_potlucks
+    self.potluck_host_events.select do |event|
+      event.starts_at < Time.now.utc
     end
   end
 end

@@ -1,6 +1,10 @@
 <li class="event">
   <span class="event-name">
-    <a href="/potlucks/<%= event.id %>"><%= event.name %></a>
+    <% if logged_in? %>
+      <a href="/potlucks/<%= event.id %>"><%= event.name %></a>
+    <% else %>
+      <a href="/sessions/new"><%= event.name %></a>
+    <% end %>
     </span>
   <span class="event-details"><%= date(event.starts_at) %> at <%= event.location %></span>
 </li>

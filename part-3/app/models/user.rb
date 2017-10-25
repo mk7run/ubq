@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
       errors.add(:password, "must be 6 characters or more")
     end
   end
+
+  def has_potlucks_to_host?
+    self.potluck_host_events.length > 0
+  end
 end

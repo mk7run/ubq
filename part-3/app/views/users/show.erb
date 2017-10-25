@@ -1,1 +1,10 @@
-<h3><%= @user.username %>'s Profile Page</h3>
+<h3><%= @user.username %>'s Potluck Profile Page</h3>
+
+<% if @user.has_potlucks_to_host? %>
+  <h4>Potluck events you've created:</h4>
+  <% @user.potluck_host_events.each do |event| %>
+    <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
+  <% end %>
+<% else %>
+  <h4>You haven't created a potluck event yet!</h4>
+<% end %>

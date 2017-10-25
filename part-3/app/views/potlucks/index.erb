@@ -1,10 +1,5 @@
 <ul>
   <% @current_potlucks.each do |event| %>
-    <li class="event">
-      <span class="event-name">
-        <a href="/potlucks/<%= event.id %>"><%= event.name %></a>
-        </span>
-      <span class="event-details"><%= date(event.starts_at) %> at <%= event.location %></span>
-  </li>
+    <%= erb :"/potlucks/_show_potluck", locals: {event: event} %>
   <% end %>
 </ul>

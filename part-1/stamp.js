@@ -22,3 +22,8 @@ Stamp.prototype.totalAppraisal = function(){
 Stamp.prototype.averageAppraisal = function(){
   return (this.totalAppraisal() / this.appraisalValues.length)
 }
+
+Stamp.prototype.maximumAppraisal = function(){
+  var sortedAppraisal = this.appraisalValues.sort()
+  return sortedAppraisal.pop()
+}

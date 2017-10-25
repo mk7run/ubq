@@ -1,0 +1,67 @@
+body {
+  background-color: #A3ADB8;
+  font-family: 'PT Sans Narrow', sans-serif;
+  word-spacing: 3px;
+  color: black;
+}
+
+nav {
+  float: right;
+  padding-right: 10%;
+}
+
+nav li{
+  list-style: none;
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #000000;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #9932CC;
+}
+
+header {
+  font-size: 2em;
+  padding-left: 7%;
+}
+
+.event-name {
+  font-size: 2em;
+}
+
+.event-details {
+
+}
+
+.event span {
+  display: block;
+}
+
+.event {
+  list-style: none;
+}
+
+.no-style-button {
+  background: none;
+}
+
+.no-style-button input {
+  background: none;
+  padding: 0;
+  border: none;
+  font: inherit;
+  text-decoration: none;
+}
+
+.no-style-button input:hover {
+  text-decoration: underline;
+  color: #9932CC;
+}

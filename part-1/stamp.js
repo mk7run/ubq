@@ -11,12 +11,13 @@ var Stamp = function(args){
 
 Stamp.prototype.totalAppraisal = function(){
   var stampValues = this.appraisalValues;
-  for (var i = 0; i < stampValues.length; i++){
-    return stampValues.reduce(function(sum, value){
-      return sum + value
-    });
-    return (total/ this.appraisalValues.length)
-  };
+  // for (var i = 0; i < stampValues.length; i++){
+  //   return stampValues.reduce(function(sum, value){
+  //     return sum + value
+  //   });
+  //   return (total/ this.appraisalValues.length)
+  // };
+  return stampValues.reduce((sum, value) => sum + value, 0)
 };
 
 Stamp.prototype.averageAppraisal = function(){
@@ -30,14 +31,15 @@ Stamp.prototype.averageAppraisal = function(){
 
 Stamp.prototype.maximumAppraisal = function(){
   var stampValues = this.appraisalValues;
-  for (var i = 0; i < stampValues.length; i++ ){
-    for (var j = 0; j < i; j++){
-      if (stampValues[i] > stampValues[j]){
-        var x = stampValues[i];
-        stampValues[i] = stampValues[j];
-        stampValues[j] = x
-      }
-    }
-  }
-  return stampValues[0]
+  // for (var i = 0; i < stampValues.length; i++ ){
+  //   for (var j = 0; j < i; j++){
+  //     if (stampValues[i] > stampValues[j]){
+  //       var x = stampValues[i];
+  //       stampValues[i] = stampValues[j];
+  //       stampValues[j] = x
+  //     }
+  //   }
+  // }
+  // return stampValues[0]
+  return stampValues.sort().pop();
 }
